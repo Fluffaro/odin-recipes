@@ -25,6 +25,24 @@
     margin: 0;
 }
 
+
+.h1bg {
+    display: block;
+    width: 100%;
+    height: 200px; /* Set height as needed */
+    font-size: 6rem; /* Adjust font size as needed */
+    font-weight: 900; /* Make it bold if desired */
+    background-image: url('./images/foodtable.jpg');
+    background-size: cover;
+    background-position: center;
+    -webkit-background-clip: text; /* For WebKit browsers */
+    background-clip: text;
+    color: transparent; /* Make the text color transparent */
+    text-align: center; /* Center the text */
+    line-height: 200px; /* Center text vertically */
+}
+
+
 body{
     font-family: var(--body-font);
     background-color: var(--body-color);
@@ -40,17 +58,25 @@ img{
     display: grid;
     place-items: center;
     margin-inline: 1.5rem;
+    margin-top: -150px;
     padding-block: 5rem;
 }
 
-.card__container{
+.card__container {
     display: grid;
-    row-gap: 3.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Change 200px to your desired minimum width */
+    gap: 1.5rem; /* Space between items */
+    row-gap: 3.5rem; /* Space between rows */
 }
 
-.card__article{
+.card__article {
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.1);
+    border-radius: 1.5rem; /* Optional, for smooth corners */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth shadow and scale transition */
+
+
 }
 
 .card__img{
@@ -98,14 +124,18 @@ img{
 }
 
 .card__article:hover .card__data{
+    box-shadow: 0 8px 24px hsla(0, 0%, 0%, 0.15);
     animation: show-data 1s forwards;
     opacity: 1;
     transition: opacity .3s;
 }
 
-.card__article:hover{
+.card__article:hover {
     animation: remove-overflow 2s forwards;
+    box-shadow: 0 12px 24px hsla(0, 0%, 0%, 0.2); /* More pronounced shadow on hover */
+    transform: translateY(-10px) scale(1.05); /* Slightly lift and enlarge the card */
 }
+
 
 .card__article:not(:hover){
     animation: show-overflow 2s forwards;
@@ -182,7 +212,7 @@ img{
     }
 
     .card__container{
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 1fr);
     }
     .card__img{
         width: 348px;
